@@ -6,12 +6,9 @@ import urllib.request
 
 def help():
     print("Help: crackerDown -a [text]")
-def wordInDic(word, anagram):
+def wordInDic(word, anagram): #TODO: How do i do this !!!!!
     for letter in word:
-        if(letter.lower() not in str(anagram.lower())):
-            return False
-    return True
-
+        if(letter is in anagram and letter.):
 def getAnagram():
     argv = sys.argv
     return sys.argv[2]
@@ -25,11 +22,12 @@ def getDictionary(letter):
 
 def main():
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
-    if((len(sys.argv) < 3) or sys.argv[1] != "-a"):
-        help()
-        exit(0)
+    #if((len(sys.argv) < 3) or sys.argv[1] != "-a"):
+     #   help()
+      #  exit(0)
 
-    anagram = getAnagram()
+
+    anagram = 'leandro'
     solved = []
     for letter in alphabet:
         for word in getDictionary(letter):
