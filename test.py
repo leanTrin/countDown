@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import random
 import sys
 import os
@@ -34,8 +35,12 @@ def main():
         for word in getDictionary(letter):
             if(wordInDic(word,anagram)):
                 solved.append(word)
-    
+   
     print(solved)
 
 if(__name__=="__main__"):
     main()
+
+
+
+
