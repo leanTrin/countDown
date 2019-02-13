@@ -17,7 +17,7 @@ def getAnagram():
 
 def getDictionary(letter):
     url = 'https://raw.githubusercontent.com/Leandro-Trinidad-QECS/Oxford-Dictionary/master/'
-    url3 = '_text.txt'
+    url3 = '.txt'
     data = urllib.request.urlopen(url + letter + url3)
 
     return [line.decode("utf-8").strip("\n") for line in data]
