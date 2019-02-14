@@ -6,10 +6,14 @@ import urllib.request
 
 def help():
 # Prints out the help page #
-    print("Help: crackerDown -a [text]")
+    print("count-a-gram")
+    print("Help: count-a-gram -a [text]")
+    print("      count-a-gram -a [text] -l [num]")
+    print("-a    The anagram")
+    print("-l    How long the output is")
 
 
-def wordInDic(word, anagram): #TODO: How do i do this !!!!!
+def wordInDic(word, anagram): 
 # Checks if the word can be created using the anagram #
     word = word.lower()
     anagram = anagram.lower()
@@ -51,7 +55,6 @@ def main():
 
     anagram = ''
     listAmount = 5
-    print(sys.argv)
     try:
         for i in range(len(sys.argv)):
             if(sys.argv[i] == "-a"):
@@ -67,7 +70,7 @@ def main():
         help()
         exit(0)
 
-    print("-"*5 + " countDown " + "-"*5)
+    print("-"*5 + " count-a-gram " + "-"*5)
     print("Input: %s" %(anagram))
     solved = []
     for letter in alphabet:
@@ -80,7 +83,7 @@ def main():
     for i in range(listAmount):
         print(str("%s) %s %s" % (str(i+1), solved[i], len(solved[i]))))
 
-    print("-"*21)
+    print("-"*24)
 
 if(__name__=="__main__"):
     main()

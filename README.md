@@ -10,4 +10,4 @@ of the countdown game show.
 ## Add more?
 - [x] argument for how many words to be outputed
 - [ ] shows de0finition
-
+- [ ] full anagram mode
