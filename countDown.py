@@ -7,8 +7,10 @@ import urllib.request
 def help():
     print("Help: crackerDown -a [text]")
 def wordInDic(word, anagram): #TODO: How do i do this !!!!!
-    for letter in word:
-        if(letter is in anagram and letter.):
+    letters = [x for x in anagram]
+
+    for let in letters:
+
 def getAnagram():
     argv = sys.argv
     return sys.argv[2]
