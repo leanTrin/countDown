@@ -8,6 +8,6 @@ of the countdown game show.
 - Finished the script
 
 ## Add more?
-- [ ] argument for how many words to be outputed
+- [x] argument for how many words to be outputed
 - [ ] shows de0finition
 

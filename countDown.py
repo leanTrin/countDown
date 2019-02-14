@@ -43,12 +43,30 @@ def getDictionary(letter):
 
 def main():
 # main program #
+
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
-    if((len(sys.argv) < 3) or sys.argv[1] != "-a"):
+#   if((len(sys.argv) < 3) or sys.argv[1] != "-a"):
+#       help()
+#       exit(0)
+
+    anagram = ''
+    listAmount = 5
+    print(sys.argv)
+    try:
+        for i in range(len(sys.argv)):
+            if(sys.argv[i] == "-a"):
+                anagram = sys.argv[i+1]
+            if((len(sys.argv) < 3) or ("-a" not in sys.argv)):
+                help()
+                exit(0)
+                
+            if(sys.argv[i] == "-l"):
+                listAmount = int(sys.argv[i+1])
+    except Exception as e:
+        print(e)
         help()
         exit(0)
 
-    anagram = getAnagram()
     print("-"*5 + " countDown " + "-"*5)
     print("Input: %s" %(anagram))
     solved = []
@@ -57,14 +75,12 @@ def main():
             if(wordInDic(word,anagram)):
                 solved.append(word)
     sortArray(solved)
-
-    for i in range(5):
+    if(len(solved) < listAmount):
+        listAmount = len(solved)
+    for i in range(listAmount):
         print(str("%s) %s %s" % (str(i+1), solved[i], len(solved[i]))))
+
     print("-"*21)
 
 if(__name__=="__main__"):
     main()
-
-
-
-
