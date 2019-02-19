@@ -9,9 +9,10 @@ def help():
     print("count-a-gram")
     print("Help: count-a-gram -a [text]")
     print("      count-a-gram -a [text] -l [num]")
+    print("      count-a-gram -a [text] -f")
     print("-a    The anagram")
     print("-l    How long the output is")
-
+    print("-f    Full anagram")
 
 def wordInDic(word, anagram): 
 # Checks if the word can be created using the anagram #
@@ -24,7 +25,17 @@ def wordInDic(word, anagram):
             anagram = anagram.replace(letter,"",1)
     return True
             
-
+def fullwordInDic(word,anagram):
+    word = word.lower()
+    anagram = anagram.lower()
+    if(len(word) != len(anagram)):
+        return False
+    for letter in word:
+        if(letter in anagram):
+            anagram = anagram.replace(letter,"",1)
+    if(len(anagram) == 0):
+        return True
+    return False
 def getAnagram():
 # gets the users arguments #
     argv = sys.argv
@@ -55,13 +66,17 @@ def main():
 
     anagram = ''
     listAmount = 5
+    fullAnagram = False
     try:
+
+        if((len(sys.argv) < 3) or ("-a" not in sys.argv)):
+            help()
+            exit(0)
         for i in range(len(sys.argv)):
             if(sys.argv[i] == "-a"):
                 anagram = sys.argv[i+1]
-            if((len(sys.argv) < 3) or ("-a" not in sys.argv)):
-                help()
-                exit(0)
+            if(sys.argv[i] == "-f"):
+                fullAnagram = True
                 
             if(sys.argv[i] == "-l"):
                 listAmount = int(sys.argv[i+1])
@@ -73,11 +88,18 @@ def main():
     print("-"*5 + " count-a-gram " + "-"*5)
     print("Input: %s" %(anagram))
     solved = []
-    for letter in alphabet:
-        for word in getDictionary(letter):
-            if(wordInDic(word,anagram)):
-                solved.append(word)
-    sortArray(solved)
+
+    if(not fullAnagram):
+        for letter in alphabet:
+            for word in getDictionary(letter):
+                if(wordInDic(word,anagram)):
+                    solved.append(word)
+        sortArray(solved)
+    else:
+        for letter in alphabet:
+            for word in getDictionary(letter):
+                if(fullwordInDic(word,anagram)):
+                    solved.append(word)
     if(len(solved) < listAmount):
         listAmount = len(solved)
     for i in range(listAmount):
