@@ -10,9 +10,11 @@ def help():
     print("Help: count-a-gram -a [text]")
     print("      count-a-gram -a [text] -l [num]")
     print("      count-a-gram -a [text] -f")
+    print("      count-a-gram -c [text]")
     print("-a    The anagram")
     print("-l    How long the output is")
     print("-f    Full anagram")
+    print("-c    create anagram")
 
 def wordInDic(word, anagram): 
 # Checks if the word can be created using the anagram #
@@ -36,6 +38,16 @@ def fullwordInDic(word,anagram):
     if(len(anagram) == 0):
         return True
     return False
+
+def createAnagram(word):
+    word = word.lower()
+    word = [x for x in word]
+    random.shuffle(word)
+    strings = ""
+    for i in word:
+        strings += i
+    return strings
+
 def getAnagram():
 # gets the users arguments #
     argv = sys.argv
@@ -67,6 +79,7 @@ def main():
     anagram = ''
     listAmount = 5
     fullAnagram = False
+    createAnag = False
     try:
 
         if((len(sys.argv) < 3) or ("-a" not in sys.argv)):
@@ -80,6 +93,8 @@ def main():
                 
             if(sys.argv[i] == "-l"):
                 listAmount = int(sys.argv[i+1])
+            if(sys.argv[i] == "-c"):
+                createAnag = True
     except Exception as e:
         print(e)
         help()
@@ -89,17 +104,20 @@ def main():
     print("Input: %s" %(anagram))
     solved = []
 
-    if(not fullAnagram):
+    if(not fullAnagram and not createAnagram):
         for letter in alphabet:
             for word in getDictionary(letter):
                 if(wordInDic(word,anagram)):
                     solved.append(word)
         sortArray(solved)
-    else:
+    elif(fullAnagram and not createAnagram):
         for letter in alphabet:
             for word in getDictionary(letter):
                 if(fullwordInDic(word,anagram)):
                     solved.append(word)
+    if(createAnag):
+        for _ in range(listAmount):
+            solved.append(createAnagram(anagram))
     if(len(solved) < listAmount):
         listAmount = len(solved)
     for i in range(listAmount):
