@@ -17,7 +17,7 @@ def help():
     print("-f    Full anagram")
     print("-c    create anagram")
 
-def wordInDic(word, anagram): 
+def wordInDic(word, anagram):
 # Checks if the word can be created using the anagram #
     word = word.lower()
     anagram = anagram.lower()
@@ -27,7 +27,7 @@ def wordInDic(word, anagram):
         else:
             anagram = anagram.replace(letter,"",1)
     return True
-            
+
 def fullwordInDic(word,anagram):
     word = word.lower()
     anagram = anagram.lower()
@@ -55,7 +55,7 @@ def getAnagram():
     return sys.argv[2]
 
 
-def sortArray(arry): 
+def sortArray(arry):
 # Sorts the array #
     arry.sort(key = len, reverse = True)
 
@@ -91,7 +91,7 @@ def main():
                 anagram = sys.argv[i+1]
             if(sys.argv[i] == "-f"):
                 fullAnagram = True
-                
+
             if(sys.argv[i] == "-l"):
                 listAmount = int(sys.argv[i+1])
             if(sys.argv[i] == "-c"):
