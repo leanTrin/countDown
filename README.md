@@ -4,6 +4,11 @@ of the countdown game show.
 
 ## Updates
 
+### June 7, 2020 - The New Update
+- updating the program
+- created a file for the letters part of the game
+- fully functioning command line argument
+
 ### Febuary 13, 2019 - The Finish
 - Finished the script
 
